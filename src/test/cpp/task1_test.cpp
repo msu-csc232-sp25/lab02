@@ -1,5 +1,5 @@
 /**
- * CSC232 - Data Structures
+* CSC232 - Data Structures
  * Missouri State University, Spring 2025
  *
  * @file    task1_test.cpp
@@ -32,7 +32,27 @@ namespace csc232 {
     }
 
 #else
-    // TODO: Add unit tests as needed for task 1
+    TEST_F(Task1TestFixture, BaseCaseTest)
+    {
+        constexpr auto expected{1};
+        const auto actual{task1::fib(0)};
+        EXPECT_EQ(expected, actual);
+    }
+
+    TEST_F(Task1TestFixture, EdgeCaseTest)
+    {
+        constexpr auto expected{1};
+        const auto actual{task1::fib(1)};
+        EXPECT_EQ(expected, actual);
+    }
+
+    TEST_F(Task1TestFixture, BigValueTest)
+    {
+        constexpr auto expected{165580141};
+        const auto actual{task1::fib(40)};
+        EXPECT_EQ(expected, actual);
+    }
+
 #endif
 
 } // end namespace csc232

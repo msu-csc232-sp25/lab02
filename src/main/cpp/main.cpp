@@ -1,5 +1,5 @@
 /**
- * CSC232 - Data Structures
+* CSC232 - Data Structures
  * Missouri State University, Spring 2025
  *
  * @file    main.cpp
@@ -13,17 +13,20 @@
 
 #include "csc232.h"
 
-int main(int argc, char *argv[]) {
-    std::cout << "Hello, Main Target!" << std::endl;
-    // we subtract one from argc because it includes the name of the executable itself
-    std::cout << "This program was launched with " << (argc - 1) << " command line arguments." << std::endl;
-    if (argc > 1) {
-        std::cout << "The program arguments are: ";
-        // we skip argv[0] because that's the name of the executable itself
-        for (int i = 1; i < argc; ++i) {
-            std::cout << argv[i] << " ";
-        }
-        std::cout << std::endl;
-    }
+int main(int argc, char* argv[])
+{
+    // For the naive solution, this may take a noticeable amount of time to complete,
+    // particularly on an older, slower, computer.
+    static constexpr auto N = 40;
+    const auto naive_result = task1::fib(N);
+    std::cout << setw(18) << left;
+    std::cout << "naive_result:" << naive_result << std::endl;
+    const auto top_down_result = task2::fib(N);
+    std::cout << setw(18) << left;
+    std::cout << "top_down_result:" << top_down_result << std::endl;
+    const auto bottom_up_result = task3::fib(N);
+    std::cout << setw(18) << left;
+    std::cout << "bottom_up_result:" << bottom_up_result << std::endl;
+
     return EXIT_SUCCESS;
 }
