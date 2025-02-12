@@ -64,7 +64,10 @@ namespace task1
     inline unsigned int fib(const unsigned int n)
     {
         // TODO: Task 1 - Implement me properly using a naive, recursive solution
-        return 0;
+        if(n==0 || n == 1){
+            return 1;
+        }
+        return fib(n - 1) + fib(n - 2);
     }
 }
 
