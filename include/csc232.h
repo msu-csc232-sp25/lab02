@@ -19,9 +19,9 @@
 
 #define EXECUTE_PREAMBLE TRUE
 
-#define TEST_TASK1 FALSE
-#define TEST_TASK2 FALSE
-#define TEST_TASK3 FALSE
+#define TEST_TASK1 TRUE
+#define TEST_TASK2 TRUE
+#define TEST_TASK3 TRUE
 #define TEST_TASK4 FALSE
 #define TEST_TASK5 FALSE
 
@@ -64,7 +64,10 @@ namespace task1
     inline unsigned int fib(const unsigned int n)
     {
         // TODO: Task 1 - Implement me properly using a naive, recursive solution
-        return 0;
+        if(n==0 || n == 1){
+            return 1;
+        }
+        return fib(n - 1) + fib(n - 2);
     }
 }
 
@@ -75,9 +78,14 @@ namespace task2
         static std::map<unsigned int, unsigned int> fibMap{};
         fibMap[0] = 1;
         fibMap[1] = 1;
-
         // TODO: Task 2 - Implement me properly using memoization, i.e., using a top-down approach
-        return 0;
+        if(fibMap.find(n) != fibMap.end()){
+            return fibMap[n];
+        }else if(n==0 || n==1){
+            return fibMap[n];
+        }
+        fibMap[n] = fib(n - 1) + fib(n - 2);
+        return fib(n - 1) + fib(n - 2);
     }
 }
 
@@ -86,8 +94,13 @@ namespace task3
     inline unsigned int fib(const unsigned int n)
     {
         // TODO: Task 3 - Implement me properly using a bottom-up approach
-        return 0;
+        int x = 1;
+        int y = 1;
+        for(unsigned int i = 2; i < n; i++){
+            y += x;
+            x = y - x;
+        }
+        return y;
     }
 }
-
 #endif // MSU_CSC232_H
